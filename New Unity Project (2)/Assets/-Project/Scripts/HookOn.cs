@@ -10,13 +10,13 @@ public class HookOn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 		pos = hook.transform.position;
-		load.transform.position = new Vector3 (pos.x, pos.y - 0.5f, pos.z); // load(荷物)をhookに追従させる
+		load.transform.position = new Vector3 (pos.x, pos.y - 1f, pos.z); // load(荷物)をhookに追従させる
 	}
 }
