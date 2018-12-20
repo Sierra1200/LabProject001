@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CharacterRotation : MonoBehaviour {
 
-	public float speed = 2.0f;
-
 	// Use this for initialization
 	void Start () {
 
@@ -14,10 +12,6 @@ public class CharacterRotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	}
-
-	void FixedUpdate () {
-		transform.position += transform.forward * speed * Time.deltaTime;
 	}
 
 	void OnTriggerEnter (Collider col) {

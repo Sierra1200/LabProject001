@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class craneBeam : MonoBehaviour
 {
-	[System.Serializable]
+    // public float[] a = {0.5f, 0.5f, 0.5f};
+    // public Animation anim;
+
+    [System.Serializable]
 	public class LayerInfo
 	{
 		public string name;
@@ -46,12 +49,19 @@ public class craneBeam : MonoBehaviour
 			{
 				string currentLayerName = layersNamesToInitAtHalf[i];
 				int currentLayerIndex = animator.GetLayerIndex(currentLayerName);
+                // Debug.Log("LayerIndex:" + currentLayerIndex.ToString() + ", LayerName:" + currentLayerName.ToString());
 				AnimatorStateInfo curStateInfo = animator.GetCurrentAnimatorStateInfo(currentLayerIndex);
-
-				animator.Play(curStateInfo.shortNameHash, currentLayerIndex, 0.5f);
+                animator.Play(curStateInfo.shortNameHash, currentLayerIndex, 0.5f);
 			}
-		}
-	}
+            // クレーンの初期位置を設定する処理
+            /*
+            AnimationState curState = animator.GetCurrentAnimatorStateInfo(0);
+            curStateInfo.normalizedTime = a[i];
+            */
+            //anim["craneBeam"].normalizedTime = 0f;
+            //Debug.Log("curState:" + anim["craneBeam"].normalizedTime.ToString());
+        }
+    }
 
 	public void Update ()
 	{
@@ -61,7 +71,6 @@ public class craneBeam : MonoBehaviour
 			{
 				LayerInfo curLayerInfo = layers[i];
 
-				// クレーンを上下させたい時に考慮するべきところ
 				curLayerInfo.curValue = Input.GetAxis(curLayerInfo.axisName);
 
 				if (curLayerInfo.isControlNormalizedTime)
